@@ -158,6 +158,13 @@
   .cmodal{background:var(--white);border-radius:var(--r);max-width:420px;width:100%;padding:28px;box-shadow:var(--sh-h);position:relative}
   .cmodal .x{position:absolute;top:14px;right:16px;background:transparent;border:0;font-size:24px;color:var(--ink3);cursor:pointer;line-height:1}
   @media(max-width:760px){.cbtn{padding:13px 18px;font-size:13.5px}}
+  .lthumb{height:200px;overflow:hidden;background:#eef0f7;border-bottom:1px solid var(--line)}
+  .lthumb img{width:100%;height:100%;object-fit:cover;object-position:top}
+  .card.letter:hover{transform:translateY(-4px);box-shadow:var(--sh-h)}
+  .lbox{position:fixed;inset:0;z-index:95;background:rgba(15,17,22,.85);display:none;align-items:center;justify-content:center;padding:24px}
+  .lbox.open{display:flex}
+  .lbox img{max-width:min(720px,92vw);max-height:88vh;border-radius:12px;box-shadow:0 24px 70px rgba(0,0,0,.55)}
+  .lbox .x{position:absolute;top:18px;right:22px;background:#fff;border:0;width:44px;height:44px;border-radius:50%;font-size:24px;cursor:pointer;color:var(--navy);line-height:1}
   #keomap{height:440px;border-radius:var(--r);overflow:hidden;box-shadow:var(--sh);border:1px solid var(--line);z-index:0}
   .keopin-dot{width:22px;height:22px;border-radius:50%;background:var(--blue);border:3px solid #fff;box-shadow:0 0 0 7px rgba(53,184,252,.22),0 4px 12px rgba(0,0,0,.25)}
   .leaflet-popup-content{font-family:var(--sans);font-size:13.5px;color:var(--navy);line-height:1.5}
@@ -206,6 +213,7 @@
 </div></header>
 <main id="app"></main>
 <footer><div class="wrap" id="footer"></div></footer>
+<div class="lbox" id="lbox"><button class="x" id="lbx" aria-label="Закрыть">×</button><img id="lbimg" src="" alt=""></div>
 <button class="cbtn" id="cbtn">Заказать звонок</button>
 <div class="cback" id="cback"><div class="cmodal">
   <button class="x" id="cbx" aria-label="Закрыть">×</button>
@@ -760,68 +768,15 @@ const SEG=[
 
 /* ===== ДОВЕРИЕ: благодарности, клиенты ===== */
 const LETTERS=[
- {org:"ООО «Вперёд»",subj:"за технический план здания",year:"2025"},
- {org:"УК «Альфа-Капитал»",subj:"за оформление недвижимости",year:"2023"},
- {org:"АО «ТЕОДОР»",subj:"за внесение изменений в ЕГРН",year:"2026"},
- {org:"РСПП",subj:"за строительно-техническое исследование",year:"2024"},
+ {org:"ООО «Вперёд»",subj:"за технический план здания",year:"2025",img:"vpered"},
+ {org:"УК «Альфа-Капитал»",subj:"за оформление недвижимости",year:"2023",img:"alfa"},
+ {org:"АО «ТЕОДОР»",subj:"за внесение изменений в ЕГРН",year:"2026",img:"teodor"},
+ {org:"РСПП",subj:"за строительно-техническое исследование",year:"2024",img:"rspp"},
 ];
 const CLIENTS=["Мосводоканал","X5 Retail Group","РЖД","Leon","Ломоносовская школа"];
 function clientStrip(){return `<section style="padding:36px 0"><div class="wrap"><div class="clogos">${CLIENTS.map(x=>`<span class="clogo">${esc(x)}</span>`).join('')}</div></div></section>`;}
-function trustLetters(){return `<section style="padding-top:0"><div class="wrap"><div class="sec-head"><div class="eyebrow">Нам доверяют</div><h2>Благодарственные письма</h2><p class="lede" style="margin-top:12px">Компании и организации, которые рекомендуют KEO GROUP.</p></div>
-  <div class="grid g4">${LETTERS.map(l=>`<div class="card" style="display:flex;flex-direction:column;gap:8px"><div style="width:46px;height:46px;border-radius:12px;background:color-mix(in srgb,var(--blue) 14%,#fff);color:var(--blue2);display:flex;align-items:center;justify-content:center">${OIC.doc}</div><h3 style="font-size:16px;margin:6px 0 0">${esc(l.org)}</h3><p class="muted" style="font-size:13.5px;margin:0">${esc(l.subj)}</p><div class="ink3" style="font-size:12.5px;margin-top:auto">Благодарственное письмо, ${esc(l.year)}</div></div>`).join('')}</div></div></section>`;}
-
-/* ===== БЛОГ: экспертные статьи ===== */
-const ARTICLES=[
- {slug:"priostanovka-rosreestr",img:"rosreestr",c:"#27c281",cat:"Росреестр",date:"Июнь 2026",
-  title:"Приостановка в Росреестре: почему случается и как снять",
-  lede:"Около 7 из 10 заявок без профессиональной подготовки получают приостановку. Разбираем причины и понятный план действий.",
-  body:`<h3>Что такое приостановка</h3><p>Приостановка это решение государственного регистратора временно не проводить регистрацию, пока вы не устраните замечания. Это ещё не отказ, но если ничего не сделать, дело закончится именно отказом.</p>
-  <h3>Почему она случается</h3><p>Чаще всего причина в документах: ошибки и неточности в техническом плане, неполный пакет, расхождения в сведениях ЕГРН, вопросы к полномочиям заявителя. Без профильной подготовки приостановка происходит примерно в 7 случаях из 10.</p>
-  <h3>Сколько есть времени</h3><p>На устранение причин даётся около 3 месяцев. После подачи дополнительных документов регистратор возобновляет процедуру и обычно завершает её за несколько рабочих дней.</p>
-  <h3>Что делать</h3><p>Сначала разбираем точную причину из уведомления. Если она обоснована, исправляем документы и подаём повторно. Если нет, обжалуем через апелляционную комиссию, на это отводится 30 дней. Важно не подавать заявку повторно вслепую, это ведёт к новому кругу приостановок.</p>
-  <h3>Как не попасть снова</h3><p>Готовить документы с учётом требований конкретного объекта и заранее проверять сведения ЕГРН. Мы берём это на себя и доводим до выписки под ключ.</p>`},
- {slug:"legalizaciya-819pp",img:"legal",c:"#7a5cff",cat:"Легализация",date:"Июнь 2026",
-  title:"Легализация самостроя по 819-ПП: как узаконить через ГЗК",
-  lede:"Если объект в реестре самостроя, его нельзя свободно продать или заложить, есть риск сноса. Рассказываем, как пройти путь до права собственности.",
-  body:`<h3>Что значит попасть в 819-ПП</h3><p>Это московский перечень объектов с признаками самовольного строительства. Пока объект в нём, сделки с ним блокируются, а город может инициировать снос.</p>
-  <h3>Через что идёт легализация</h3><p>Ключевой орган это Градостроительно-земельная комиссия Москвы. Именно её положительное решение, оформленное протоколом, позволяет сохранить объект и оформить право собственности на возведённые площади.</p>
-  <h3>Какие документы нужны</h3><p>Готовится комплект: заключение о соответствии (ЗОС), архитектурно-градостроительный облик (АГР), паспорт безопасности и обоснование. Это техническая и правовая база, которую смотрит комиссия.</p>
-  <h3>Сколько занимает</h3><p>Обычно от 5 до 15 месяцев в зависимости от объекта, истории и согласований с ресурсниками. По части объектов требуется согласование с Мосводоканалом и Мосводостоком.</p>
-  <h3>Что в итоге</h3><p>Протокол ГЗК о сохранении, исключение из реестра 819-ПП и признанное право собственности. После этого объект снова можно использовать и продавать.</p>`},
- {slug:"krt-kompensaciya",img:"krt",c:"#7a5cff",cat:"КРТ",date:"Июнь 2026",
-  title:"Попали в зону КРТ: как добиться справедливой компенсации",
-  lede:"За 5,5 месяцев 2026 в Москве и области принято свыше 220 решений об изъятии. Госоценка часто занижает стоимость. Что можно сделать.",
-  body:`<h3>Что такое КРТ</h3><p>Комплексное развитие территории. Город реорганизует участок, а объекты на нём могут изъять с выплатой компенсации. Решения принимаются массово, поэтому важно действовать на опережение.</p>
-  <h3>Сколько времени на решение</h3><p>Ориентир около 90 дней на подписание соглашения о компенсации. Если не согласиться с суммой, спор переходит в суд.</p>
-  <h3>Почему первая сумма обычно занижена</h3><p>Государственная оценка системно ниже рынка. Она часто не учитывает упущенную выгоду, улучшения и реальное использование объекта.</p>
-  <h3>Как добиться большего</h3><p>Через независимую судебную экспертизу. Она оценивает рыночную стоимость и убытки по-настоящему, поэтому итоговая компенсация выходит заметно выше начальной.</p>
-  <h3>Что входит в компенсацию</h3><p>Рыночная стоимость объекта, убытки, упущенная выгода, в ряде случаев стоимость оборудования. Чем раньше подключиться, тем больше пространства для защиты.</p>`},
- {slug:"smena-vri",img:"vri",c:"#7a5cff",cat:"Земля",date:"Июнь 2026",
-  title:"Смена ВРИ участка: зачем нужна и сколько стоит ошибка",
-  lede:"Неверный вид разрешённого использования блокирует аренду, стройку и повышает налог. Разбираем, когда и как менять ВРИ.",
-  body:`<h3>Почему ВРИ так важен</h3><p>Росреестр не зарегистрирует договор аренды, если назначение помещения не совпадает с видом разрешённого использования участка. Это прямо следует из ст. 37 Градостроительного кодекса.</p>
-  <h3>Чем грозит нецелевое использование</h3><p>Штраф от 1,5 до 2 процентов кадастровой стоимости, но не менее 100 000 рублей для юрлиц. Плюс может вырасти земельный налог.</p>
-  <h3>Два пути смены ВРИ</h3><p>Если нужный вид есть в градостроительном регламенте зоны, достаточно заявления. Если нет, меняем правила землепользования и застройки через Департамент градполитики и ГЗК, это дольше.</p>
-  <h3>Что такое ПМТ</h3><p>Проект межевания территории. Он определяет границы участков и нужен для присоединения земель, изменения границ и образования новых участков.</p>
-  <h3>Сроки</h3><p>ВРИ без ПЗЗ обычно 2-4 месяца, через ПЗЗ 6-10 месяцев. Точный срок зависит от участка и зоны.</p>`},
- {slug:"nekapitalka-636",img:"nekapitalka",c:"#35b8fc",cat:"Некапитальные объекты",date:"Июнь 2026",
-  title:"Некапитальные объекты: как согласовать и избежать сноса",
-  lede:"Павильоны, склады и навесы без согласования сносят без компенсации. Дедлайн легализации по 1255-ПП это 1 сентября 2027 года.",
-  body:`<h3>Что считается некапитальным</h3><p>Павильоны, киоски, склады, ангары, навесы и модульные здания без заглублённого фундамента, которые можно переместить без ущерба.</p>
-  <h3>636-ПП и 1255-ПП</h3><p>636-ПП регулирует размещение на городской земле через ДГИ. 1255-ПП с 1 сентября 2024 года касается размещения на частной земле по новой процедуре.</p>
-  <h3>Чем грозит отсутствие согласования</h3><p>Снос без компенсации, штраф для юрлиц до 1 млн рублей, приостановка бизнеса и блокировка операций с имуществом.</p>
-  <h3>Дедлайн</h3><p>Ориентир легализации по 1255-ПП это 1 сентября 2027 года. Чем ближе срок, тем плотнее очереди и проверки ГИН, поэтому лучше не ждать.</p>
-  <h3>Как проходит согласование</h3><p>Аудит, разработка проекта, подача, сопровождение на комиссии и получение разрешительной документации. Обычно 45-75 дней.</p>`},
- {slug:"vykup-159fz",img:"dgi",c:"#ff8a3d",cat:"ДГИ",date:"Июнь 2026",
-  title:"Выкуп помещения у города по 159-ФЗ: кому положен и как не переплатить",
-  lede:"Малый и средний бизнес имеет преимущественное право выкупа арендуемых городских помещений. Но оценка города часто завышена.",
-  body:`<h3>Кому положен выкуп</h3><p>Субъектам малого и среднего предпринимательства, которые арендуют помещение у города от 2 лет и не имеют долгов по аренде.</p>
-  <h3>В чём подвох</h3><p>Цена выкупа определяется по оценке, и она нередко завышена на 30-80 процентов относительно рынка. Переплата может быть существенной.</p>
-  <h3>Как снизить цену</h3><p>Через независимую оценку и при необходимости суд. По таким делам стоимость выкупа снижают в разы.</p>
-  <h3>Другие споры с ДГИ</h3><p>Доначисления аренды и неустойки, требования о расторжении, штрафы за нецелевое использование. Многие из них можно оспорить или снизить.</p>
-  <h3>С чего начать</h3><p>С проверки права на выкуп и анализа оценки. На разборе сразу видно, есть ли основания снижать цену и оспаривать условия.</p>`},
-];
-
+function trustLetters(){return `<section style="padding-top:0"><div class="wrap"><div class="sec-head"><div class="eyebrow">Нам доверяют</div><h2>Благодарственные письма</h2><p class="lede" style="margin-top:12px">Компании и организации, которые рекомендуют KEO GROUP. Нажмите, чтобы открыть письмо.</p></div>
+  <div class="grid g4">${LETTERS.map(l=>`<div class="card letter" data-letter="${l.img}" data-org="${esc(l.org)}" style="cursor:pointer;padding:0;overflow:hidden;display:flex;flex-direction:column"><div class="lthumb"><img src="./images/letters/${l.img}.jpg" alt="Благодарственное письмо ${esc(l.org)}" loading="lazy"></div><div style="padding:18px"><h3 style="font-size:16px;margin:0 0 4px">${esc(l.org)}</h3><p class="muted" style="font-size:13px;margin:0 0 8px">${esc(l.subj)}</p><div class="ink3" style="font-size:12px">Благодарственное письмо, ${esc(l.year)} · смотреть →</div></div></div>`).join('')}</div></div></section>`;}
 function articlePage(slug){const a=ARTICLES.find(x=>x.slug===slug);if(!a)return null;const other=ARTICLES.filter(x=>x.slug!==slug).slice(0,3);
  return `<section class="hero" style="padding-bottom:6px"><div class="wrap"><div class="row">
    <div><p class="crumbs"><a href="#/">Главная</a> / <a href="#/blog">Блог</a> / <span>${esc(a.cat)}</span></p>
@@ -1090,6 +1045,9 @@ function render(){
   window.scrollTo(0,0);wireForm();if(h==='/kontakty'){setTimeout(initMap,60);}
 }
 document.getElementById('burger').onclick=()=>document.getElementById('menu').classList.toggle('open');
+window.openLetter=function(src,org){var lb=document.getElementById('lbox');document.getElementById('lbimg').src=src;document.getElementById('lbimg').alt=org||'';lb.classList.add('open');};
+(function(){var lb=document.getElementById('lbox');if(lb){document.getElementById('lbx').onclick=function(){lb.classList.remove('open');};lb.addEventListener('click',function(e){if(e.target===lb)lb.classList.remove('open');});}
+ document.addEventListener('click',function(e){var c=e.target.closest&&e.target.closest('.letter');if(c&&c.dataset.letter)window.openLetter('./images/letters/'+c.dataset.letter+'.jpg',c.dataset.org);});})();
 (function(){
   var btn=document.getElementById('cbtn'),back=document.getElementById('cback');if(!btn)return;
   function open(){back.classList.add('open');}function close(){back.classList.remove('open');}
