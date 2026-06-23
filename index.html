@@ -47,8 +47,8 @@
   .logo b{font-size:21px;font-weight:800;color:var(--navy);letter-spacing:.01em;line-height:1}
   .logo small{display:block;font-size:10px;font-weight:700;letter-spacing:.12em;color:var(--ink3);text-transform:uppercase;margin-top:3px}
   .menu{display:flex;align-items:center;gap:2px;margin-left:8px}
-  .menu>a,.menu .drop>span{padding:11px 14px;border-radius:10px;font-size:14.5px;font-weight:700;color:var(--navy);cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:color .2s,background .2s;white-space:nowrap}
-  .menu>a:hover,.menu .drop:hover>span{color:var(--blue2);background:var(--soft)}
+  .menu>a,.menu .drop>a{padding:11px 14px;border-radius:10px;font-size:14.5px;font-weight:700;color:var(--navy);cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:color .2s,background .2s;white-space:nowrap}
+  .menu>a:hover,.menu .drop:hover>a{color:var(--blue2);background:var(--soft)}
   .menu>a.on{color:var(--blue2)}
   .nav .right{margin-left:auto;display:flex;align-items:center;gap:16px;flex:0 0 auto}
   .nav .tel{font-weight:800;font-size:16px;color:var(--navy);white-space:nowrap}
@@ -148,8 +148,8 @@
   @media(max-width:760px){
     .menu{position:fixed;inset:82px 0 auto 0;flex-direction:column;align-items:stretch;background:#fff;border-bottom:1px solid var(--line);padding:14px;gap:2px;transform:translateY(-150%);transition:transform .25s;max-height:84vh;overflow:auto;margin:0}
     .menu.open{transform:translateY(0)}
-    .menu>a,.menu .drop>span{padding:14px;font-size:16px}
-    .mega{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:0;display:none}
+    .menu>a,.menu .drop>a{padding:14px;font-size:16px}
+    .mega{display:none!important}
     .drop.open .mega{display:block}
     .mega .in{grid-template-columns:1fr;padding:6px 0 6px 12px;gap:6px}
     .nav .right .tel{display:none}
@@ -284,7 +284,7 @@ function renderChrome(){
   const cols=GROUPS.map(g=>`<div class="col"><h4>${esc(g.title)}</h4>${svcByGroup(g.key).map(s=>`<a href="#/u/${s.slug}">${esc(s.name)}</a>`).join('')}</div>`).join('');
   document.getElementById('menu').innerHTML=`
     <a href="#/" data-r="/">Главная</a>
-    <div class="drop"><span data-r="/uslugi">Услуги ▾</span><div class="mega"><div class="wrap"><div class="in">${cols}
+    <div class="drop"><a href="#/uslugi" data-r="/uslugi">Услуги ▾</a><div class="mega"><div class="wrap"><div class="in">${cols}
       <div class="feat"><div><h4>Не знаете, с чего начать</h4><p>Оставьте заявку, эксперт разберёт ваш объект и подскажет нужное направление и план.</p></div><a class="btn primary bracket" href="#/kontakty" style="margin-top:16px">Получить разбор</a></div>
     </div></div></div></div>
     <a href="#/segmenty" data-r="/segmenty">Сегменты</a>
@@ -293,7 +293,7 @@ function renderChrome(){
     <a href="#/ceny" data-r="/ceny">Цены</a>
     <a href="#/faq" data-r="/faq">Вопросы</a>
     <a href="#/kontakty" data-r="/kontakty">Контакты</a>`;
-  document.getElementById('menu').querySelectorAll('.drop>span').forEach(sp=>sp.onclick=e=>{if(window.innerWidth<=760)e.currentTarget.parentElement.classList.toggle('open');});
+  
   document.getElementById('footer').innerHTML=`
     <div class="fgrid">
       <div class="fcol"><a class="logo" href="#/" style="margin-bottom:16px"><span class="m">KEO</span><span><b>GROUP</b></span></a>
@@ -339,7 +339,7 @@ PAGES["/"]=()=>`
       <p class="lede">Полный цикл под ключ: аудит, проект, согласование, легализация, регистрация. Инженеры, кадастровые специалисты и юристы в одной команде. Результат закрепляем гарантией в договоре.</p>
       <div class="cta"><a class="btn primary bracket" href="#/kontakty">Получить разбор объекта</a><a class="btn ghost bracket" href="#/uslugi">Все услуги</a></div>
     </div>
-    <div class="pic"><img src="./images/hero.png" alt="Деловая Москва">
+    <div class="pic"><img src="./images/hero.jpg" alt="Деловая Москва">
       <div class="badge"><b>100%</b><span>положительных решений ГЗК</span></div>
     </div>
   </div></div></section>
@@ -373,9 +373,13 @@ PAGES["/segmenty"]=()=>`<section><div class="wrap">
 
 PAGES["/keysy"]=()=>`<section><div class="wrap">
   <p class="crumbs"><a href="#/">Главная</a> / <span>Кейсы</span></p>
-  <div class="sec-head"><div class="eyebrow">Портфолио</div><h2>Объекты, которые узаконили</h2><p class="lede" style="margin-top:12px">Цифры из договоров и протоколов ГЗК: площади, сроки, округа Москвы.</p></div>
+  <div class="sec-head"><div class="eyebrow">Портфолио</div><h2>Наши объекты</h2><p class="lede" style="margin-top:12px">Объекты, которые узаконили, и объекты в управлении. Цифры из договоров и протоколов ГЗК.</p></div>
+  <h3 style="font-size:22px;margin:0 0 18px">Объекты, которые узаконили</h3>
   <div class="grid g3">${CASES.map(caseCard).join('')}</div>
-</div></section>${band("Хотите такой же результат","Покажем, как пройти ваш объект, и зафиксируем план в договоре.")}`;
+  <h3 style="font-size:22px;margin:44px 0 18px">Объекты в управлении</h3>
+  <div class="grid g3">${CASES_MGMT.map(mgmtCaseCard).join('')}</div>
+  <p class="muted" style="margin-top:18px;font-size:14px">Скоро добавим объекты, которые зарегистрировали под ключ.</p>
+</div></section>${band("Хотите такой же результат","Покажем, как пройти ваш объект или передать его в управление, и зафиксируем план в договоре.")}`;
 
 PAGES["/o-kompanii"]=()=>`<section><div class="wrap">
   <p class="crumbs"><a href="#/">Главная</a> / <span>О компании</span></p>
@@ -433,7 +437,7 @@ PAGES["/spasibo"]=()=>`<section><div class="wrap" style="max-width:640px;text-al
   <p class="lede" style="margin:0 auto 26px">Эксперт KEO GROUP свяжется с вами в ближайшее время, разберёт объект и предложит план.</p>
   <a class="btn primary bracket" href="#/">На главную</a></div></section>`;
 
-function servicePage(slug){const s=svcBySlug[slug];if(!s)return null;const g=groupByKey(s.g);const rel=svcByGroup(s.g).filter(x=>x.slug!==slug).slice(0,3);
+function servicePage(slug){if(slug==="upravlenie-nedvizhimostyu")return richMgmt();const s=svcBySlug[slug];if(!s)return null;const g=groupByKey(s.g);const rel=svcByGroup(s.g).filter(x=>x.slug!==slug).slice(0,3);
   return `<section><div class="wrap" style="max-width:1000px">
     <p class="crumbs"><a href="#/">Главная</a> / <a href="#/uslugi">Услуги</a> / <a href="#/g/${g.key}">${esc(g.title)}</a> / <span>${esc(s.name)}</span></p>
     <div class="grid g2" style="align-items:start;gap:40px">
@@ -456,6 +460,71 @@ function groupPage(key){const g=groupByKey(key);if(!g)return null;
     <div class="sec-head"><div style="display:flex;align-items:center;gap:12px;margin-bottom:14px"><span style="width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;background:color-mix(in srgb,${g.c} 14%,#fff);color:${g.c}">${ICONS[g.key]}</span><h2>${esc(g.title)}</h2></div><p class="lede">${esc(g.desc)}</p></div>
     <div class="grid g3">${svcByGroup(key).map(scard).join('')}</div>
   </div></section>${band("Нужна помощь по этому направлению","Опишите объект, подберём услугу и план под вашу задачу.")}`;}
+/* ===== УПРАВЛЯЮЩАЯ КОМПАНИЯ (богатая страница-лендинг) ===== */
+const CASES_MGMT=[
+ {img:"entuziastov",t:"ул. Энтузиастов, д.5 корп.34",d:"Москва",type:"Коммерческое здание"},
+ {img:"tovarishcheskiy",t:"Товарищеский пер., д.7 стр.3",d:"Москва",type:"Офисно-торговый объект"},
+ {img:"pestelya",t:"ул. Пестеля, 6Г",d:"Москва",type:"Коммерческое помещение"},
+];
+const MGMT_OFFER=[
+ [ICONS.stroyka,"Техническое обслуживание","Контроль состояния здания, регулярное обслуживание инженерных систем, ремонт при необходимости."],
+ ['<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>',"Оптимизация расходов","Анализ объекта, рынка и конкурентов, оценка эффективности площадей и поиск потенциала доходности."],
+ [ICONS.legal,"Юридическое сопровождение","Составление и проверка договоров, соблюдение законодательства, споры, взаимодействие с госорганами."],
+ ['<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg>',"Финансовое управление","Годовой бюджет объекта по всем статьям доходов и расходов, работа с бухгалтерией арендатора, сверка."],
+ ['<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-5v12L3 13v-2Z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>',"Маркетинг","Реклама объекта, показы и презентации, привлечение новых арендаторов для роста заполняемости."],
+ ['<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/></svg>',"Арендный процесс","Поиск и проверка арендаторов, договоры, контроль платежей, сопровождение на всём сроке аренды."],
+];
+const MGMT_TARIFFS=[
+ ["Минимум","5%","от арендного потока","Техническое обслуживание, финансовое управление, арендный процесс, юридические услуги",false],
+ ["Оптимальный","10%","от арендного потока","Всё из минимального плюс безопасность и охрана, маркетинг, клининг",true],
+ ["Всё включено","Индивидуально","под объект","Полный комплекс под задачи собственника, рассчитываем под конкретный объект",false],
+];
+const MGMT_STEPS=[
+ ["01","Разработка стратегии","Аудит объекта, анализ рынка и арендаторов, план повышения доходности."],
+ ["02","Работа с арендаторами","Поиск и проверка, договоры, контроль платежей, удержание и ротация."],
+ ["03","Управление объектом","Техобслуживание, финансы, юридическое сопровождение, отчётность собственнику."],
+];
+function mgmtCaseCard(c){return `<div class="case"><div class="ph"><img src="./images/mgmt/${esc(c.img)}.jpg" alt="${esc(c.t)}" loading="lazy"></div><div class="b"><div class="res" style="font-size:14px;color:var(--gold)">${esc(c.type)}</div><h4 style="margin:6px 0 0;font-size:16px">${esc(c.t)}</h4><div class="meta"><span>${esc(c.d)}</span><span>В управлении KEO GROUP</span></div></div></div>`;}
+function richMgmt(){const g=groupByKey("upravlenie");
+ return `<section class="hero"><div class="wrap"><div class="row">
+    <div><p class="crumbs"><a href="#/">Главная</a> / <a href="#/uslugi">Услуги</a> / <a href="#/g/upravlenie">Управление активами</a> / <span>Управление недвижимостью</span></p>
+      <div class="eyebrow">Управляющая компания полного цикла</div>
+      <h1>Управление коммерческой недвижимостью</h1>
+      <p class="lede">Снимаем с собственника все заботы: техническое обслуживание, арендаторы, финансы, юридическое сопровождение. Направление KEO GROUP с 2023 года, компания на рынке с 2010. Берём в управление торговую, офисную, складскую и производственную недвижимость.</p>
+      <div class="cta"><a class="btn primary bracket" href="#/kontakty">Передать объект в управление</a><a class="btn ghost bracket" href="#/ceny">Тарифы</a></div>
+    </div>
+    <div class="pic"><img src="./images/mgmt/entuziastov.jpg" alt="Объект в управлении"><div class="badge"><b>5%</b><span>от арендного потока, тариф «Минимум»</span></div></div>
+  </div></div></section>
+  <section style="padding-top:10px"><div class="wrap">
+    <div class="sec-head"><div class="eyebrow">Что входит</div><h2>Полный комплекс управления</h2></div>
+    <div class="grid g3">${MGMT_OFFER.map(([ic,t,d])=>`<div class="card"><div class="ic" style="--c:var(--gold);width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;background:color-mix(in srgb,var(--gold) 16%,#fff);color:var(--gold);margin-bottom:16px">${ic}</div><h3 style="font-size:18px;margin-bottom:8px">${esc(t)}</h3><p class="muted" style="font-size:14px;margin:0">${esc(d)}</p></div>`).join('')}</div>
+  </div></section>
+  <section style="padding-top:0"><div class="wrap">
+    <div class="sec-head"><div class="eyebrow">Кому подходит</div><h2>С кем работаем</h2></div>
+    <div class="grid g4">${["Собственники недвижимости","Управляющие компании","Фонды","Инвесторы"].map(x=>`<div class="card" style="text-align:center"><h3 style="font-size:17px;margin:0">${esc(x)}</h3></div>`).join('')}</div>
+    <p class="muted" style="margin-top:16px;font-size:14px">Собственнику снимаем задачи по обслуживанию, поиску арендаторов и финансам. Инвестору подберём объект, проверим юридическую чистоту и проведём аудит доходности и окупаемости.</p>
+  </div></section>
+  <section style="padding-top:0"><div class="wrap">
+    <div class="sec-head"><div class="eyebrow">Как работаем</div><h2>Процесс управления</h2></div>
+    <div class="grid g3">${MGMT_STEPS.map(([n,t,d])=>`<div class="card"><div style="font-size:40px;font-weight:800;color:var(--gold);line-height:1;margin-bottom:12px">${n}</div><h3 style="font-size:18px;margin-bottom:8px">${esc(t)}</h3><p class="muted" style="font-size:14px;margin:0">${esc(d)}</p></div>`).join('')}</div>
+  </div></section>
+  <section style="padding-top:0"><div class="wrap">
+    <div class="sec-head"><div class="eyebrow">Тарифы</div><h2>Прозрачные тарифы</h2><p class="lede" style="margin-top:12px">Платите процент от арендного потока, без скрытых платежей. Точную ставку считаем под объект.</p></div>
+    <div class="grid g3">${MGMT_TARIFFS.map(([name,price,unit,inc,hl])=>`<div class="card" style="${hl?'border:2px solid var(--gold)':''}"><div class="eyebrow" style="color:var(--gold)">${esc(name)}</div><div style="font-size:40px;font-weight:800;color:var(--navy);line-height:1">${esc(price)}</div><div class="muted" style="font-size:13px;margin:4px 0 14px">${esc(unit)}</div><p class="muted" style="font-size:14px;margin:0">${esc(inc)}</p></div>`).join('')}</div>
+  </div></section>
+  <section style="padding-top:0"><div class="wrap">
+    <div class="sec-head"><div class="eyebrow">Портфолио</div><h2>Объекты в управлении</h2><p class="lede" style="margin-top:12px">Реальные объекты под управлением KEO GROUP в Москве.</p></div>
+    <div class="grid g3">${CASES_MGMT.map(mgmtCaseCard).join('')}</div>
+  </div></section>
+  <section style="padding-top:0"><div class="wrap"><div class="grid g2" style="align-items:start;gap:40px">
+    <div><div class="eyebrow">Ещё направление</div><h2 style="margin-bottom:14px">Инвестиции в недвижимость</h2>
+      <p class="muted">Помогаем не только управлять, но и зарабатывать на недвижимости. Поиск и аудит объектов под доходность, строительство и реконструкция для повышения стоимости и арендного потока.</p>
+      <ul class="ulist"><li>Поиск и аудит объектов: состояние, рыночная стоимость, потенциал, юридическая чистота</li><li>Строительство и реконструкция для роста доходности</li><li>Оптимизация операционной деятельности объекта</li></ul></div>
+    <div style="position:sticky;top:100px">${leadForm("upravlenie-nedvizhimostyu")}</div>
+  </div></div></section>
+  ${band("Передайте объект в управление","Оставьте заявку, проведём аудит объекта и предложим тариф и план под вашу доходность.")}`;
+}
+
 /* ===== ФОРМА ===== */
 function wireForm(){
   const f=document.getElementById('leadform'); if(!f) return;
@@ -487,7 +556,7 @@ function render(){
   if(!html) html=`<section><div class="wrap" style="text-align:center;padding:80px 0"><div class="eyebrow">Страница не найдена</div><h2 style="margin-bottom:14px">Тут пусто</h2><p class="lede" style="margin:0 auto 24px">Такой страницы нет. Вернитесь на главную.</p><a class="btn primary bracket" href="#/">На главную</a></div></section>`;
   document.getElementById('app').innerHTML=html;
   const root='/'+(h.split('/')[1]||'');
-  document.querySelectorAll('.menu a[data-r],.menu .drop>span[data-r]').forEach(a=>a.classList.toggle('on',a.dataset.r===root));
+  document.querySelectorAll('.menu a[data-r]').forEach(a=>a.classList.toggle('on',a.dataset.r===root));
   document.getElementById('menu').classList.remove('open');
   window.scrollTo(0,0);wireForm();
 }
