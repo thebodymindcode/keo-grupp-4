@@ -26,6 +26,7 @@
   img{max-width:100%;display:block}
   .wrap{width:100%;max-width:var(--wrap);margin:0 auto;padding:0 24px}
   .long{max-width:860px;margin:0}
+  .faqcol{max-width:1040px;margin:0 auto}
   .article b.hl,.art-ul b.hl,.art-tldr b.hl,.art-note p b.hl,details.faq p b.hl{color:var(--navy);font-weight:700;background:linear-gradient(transparent 62%,color-mix(in srgb,var(--blue) 22%,#fff) 0)}
   .art-key-t b.hl{color:#fff;font-weight:800;background:none}
   .read2col{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:46px;align-items:start}
@@ -590,8 +591,8 @@ PAGES["/"]=()=>`
     <div class="grid g4">${SEG.slice(0,8).map(x=>`<a class="card" href="#/u/${x.link}" style="display:block;border-top:3px solid ${x.c}"><h3 style="font-size:16px;margin-bottom:8px">${esc(x.t)}</h3><p class="muted" style="font-size:13px;margin:0 0 12px">${esc(x.sol)}</p><span style="color:${x.c};font-weight:800;font-size:13px">Подробнее →</span></a>`).join('')}</div>
     <div style="margin-top:22px"><a class="btn ghost bracket" href="#/segmenty">Все сегменты</a></div>
   </div></section>
-  <section style="padding-top:0"><div class="wrap"><div class="long">
-    <div class="sec-head"><div class="eyebrow">Вопросы</div><h2>Коротко о важном</h2></div>
+  <section style="padding-top:0"><div class="wrap"><div class="faqcol">
+    <div class="sec-head" style="text-align:center;max-width:660px;margin:0 auto 34px"><div class="eyebrow">Вопросы</div><h2>Коротко о важном</h2></div>
     ${FAQ_DATA[0].items.slice(0,5).map(([q,a])=>`<details class="faq"><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('')}
     <div style="margin-top:18px"><a class="btn ghost bracket" href="#/faq">Все вопросы и ответы</a></div>
   </div></div></section>
@@ -747,7 +748,7 @@ PAGES["/faq"]=()=>`
  <section style="padding-top:10px"><div class="wrap"><div class="sec-head"><div class="eyebrow">Полезно знать</div><h2>Цифры, которые важно понимать</h2></div>
    <div class="grid g3">${FACTS.map(([n,t])=>`<div class="card"><div style="font-size:32px;font-weight:800;color:var(--blue2);line-height:1;margin-bottom:8px">${esc(n)}</div><p class="muted" style="font-size:14px;margin:0">${esc(t)}</p></div>`).join('')}</div>
  </div></section>
- ${FAQ_DATA.map(cat=>`<section style="padding-top:0"><div class="wrap"><div class="long"><div class="sec-head" style="margin-bottom:20px"><div class="eyebrow" style="color:${cat.c}">${esc(cat.cat)}</div><h2>${esc(cat.title)}</h2></div>${cat.items.map(([q,a])=>`<details class="faq"><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('')}</div></div></section>`).join('')}
+ ${FAQ_DATA.map(cat=>`<section style="padding-top:0"><div class="wrap"><div class="faqcol"><div class="sec-head" style="text-align:center;max-width:700px;margin:0 auto 22px"><div class="eyebrow" style="color:${cat.c}">${esc(cat.cat)}</div><h2>${esc(cat.title)}</h2></div>${cat.items.map(([q,a])=>`<details class="faq"><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('')}</div></div></section>`).join('')}
  ${band("Не нашли ответ на свой вопрос","Задайте его эксперту KEO GROUP, ответим по вашей ситуации без общих слов.")}`;
 
 PAGES["/kontakty"]=()=>`<section><div class="wrap">
@@ -989,7 +990,7 @@ function servicePage(slug){
  ${gr.who?`<section style="padding-top:0"><div class="wrap"><div class="sec-head"><div class="eyebrow" style="color:${c}">Когда нужна</div><h2>Кому подходит</h2></div><div class="grid g3">${gr.who.map(x=>`<div class="card" style="display:flex;gap:12px;align-items:flex-start"><span style="flex:0 0 auto;width:26px;height:26px;border-radius:8px;background:color-mix(in srgb,${c} 16%,#fff);color:${c};display:flex;align-items:center;justify-content:center;font-weight:800">✓</span><p class="muted" style="margin:0;font-size:14.5px">${esc(x)}</p></div>`).join('')}</div></div></section>`:''}
  ${gr.outcomes?`<section style="padding-top:0"><div class="wrap"><div class="sec-head"><div class="eyebrow" style="color:${c}">Результат</div><h2>Что вы получаете на руки</h2></div><div class="grid g3">${gr.outcomes.map(([ic,t,dd])=>`<div class="card"><div style="width:54px;height:54px;border-radius:14px;display:flex;align-items:center;justify-content:center;background:color-mix(in srgb,${c} 14%,#fff);color:${c};margin-bottom:16px">${ic}</div><h3 style="font-size:18px;margin-bottom:8px">${esc(t)}</h3><p class="muted" style="font-size:14px;margin:0">${esc(dd)}</p></div>`).join('')}</div></div></section>`:''}
  
- <section style="padding-top:0"><div class="wrap"><div class="long"><div class="sec-head"><div class="eyebrow" style="color:${c}">Вопросы</div><h2>Частые вопросы</h2></div>
+ <section style="padding-top:0"><div class="wrap"><div class="faqcol"><div class="sec-head" style="text-align:center;max-width:660px;margin:0 auto 34px"><div class="eyebrow" style="color:${c}">Вопросы</div><h2>Частые вопросы</h2></div>
    ${faqList.map(([q,a])=>`<details class="faq"><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('')}
  </div></div></section>
  ${caseBlock(s.g)}
@@ -1066,7 +1067,7 @@ function richMgmt(){const g=groupByKey("upravlenie");
       <ul class="ulist"><li>Поиск и аудит объектов: состояние, рыночная стоимость, потенциал, юридическая чистота</li><li>Строительство и реконструкция для роста доходности</li><li>Оптимизация операционной деятельности объекта</li></ul></div>
     <div style="position:sticky;top:100px">${leadForm("upravlenie-nedvizhimostyu")}</div>
   </div></div></section>
-  <section style="padding-top:0"><div class="wrap"><div class="long"><div class="sec-head"><div class="eyebrow" style="color:var(--gold)">Вопросы</div><h2>Частые вопросы</h2></div>
+  <section style="padding-top:0"><div class="wrap"><div class="faqcol"><div class="sec-head" style="text-align:center;max-width:660px;margin:0 auto 34px"><div class="eyebrow" style="color:var(--gold)">Вопросы</div><h2>Частые вопросы</h2></div>
     ${[startFaq("upravlenie")].concat(GROUP_RICH.upravlenie.faq).map(([q,a])=>`<details class="faq"><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('')}
   </div></div></section>
   ${band("Передайте объект в управление","Оставьте заявку, проведём аудит объекта и предложим тариф и план под вашу доходность.")}`;
@@ -1147,7 +1148,7 @@ function richLanding(slug){const d=RICH[slug];if(!d)return null;const s=svcBySlu
  ${d.tariffs?`<section style="padding-top:0"><div class="wrap"><div class="sec-head"><div class="eyebrow" style="color:${c}">Стоимость</div><h2>Тарифы и ориентиры</h2><p class="lede" style="margin-top:12px">Точную смету считаем после разбора объекта, оплата по этапам.</p></div>
    <div class="grid g3">${d.tariffs.map(([name,price,unit,desc,hl])=>`<div class="card" style="${hl?`border:2px solid ${c}`:''}"><div class="eyebrow" style="color:${c}">${esc(name)}</div><div style="font-size:clamp(22px,5.5vw,34px);font-weight:800;color:var(--navy);line-height:1.05;overflow-wrap:break-word">${esc(price)}</div><div class="muted" style="font-size:13px;margin:4px 0 14px">${esc(unit)}</div><p class="muted" style="font-size:14px;margin:0">${esc(desc)}</p></div>`).join('')}</div>
  </div></section>`:''}
- <section style="padding-top:0"><div class="wrap"><div class="long"><div class="sec-head"><div class="eyebrow" style="color:${c}">Вопросы</div><h2>Частые вопросы</h2></div>
+ <section style="padding-top:0"><div class="wrap"><div class="faqcol"><div class="sec-head" style="text-align:center;max-width:660px;margin:0 auto 34px"><div class="eyebrow" style="color:${c}">Вопросы</div><h2>Частые вопросы</h2></div>
    ${[startFaq(d.group)].concat(d.faq).map(([q,a])=>`<details class="faq"><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('')}
  </div></div></section>
  ${caseBlock(d.group)}
