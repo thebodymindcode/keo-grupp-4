@@ -92,7 +92,7 @@
   .drop{position:static}
   .mega{position:absolute;left:0;right:0;top:100%;background:var(--white);border-top:1px solid var(--line);box-shadow:0 30px 50px rgba(40,38,44,.12);opacity:0;visibility:hidden;transform:translateY(6px);transition:.2s;z-index:90}
   .drop:hover .mega{opacity:1;visibility:visible;transform:translateY(0)}
-  .mega .in{display:grid;grid-template-columns:repeat(5,1fr) 1.1fr;gap:20px;padding:26px 0 30px;align-items:start}
+  .mega .in{display:grid;grid-template-columns:repeat(6,1fr);gap:18px;padding:26px 0 30px;align-items:start}
   .mega .col h4{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin:0 0 12px}
   .mega .col a{display:block;padding:7px 0;font-size:13.5px;font-weight:600;color:var(--ink2);border:0}
   .mega .col a:hover{color:var(--blue2);background:transparent}
@@ -500,7 +500,6 @@ function renderChrome(){
   document.getElementById('menu').innerHTML=`
     <a href="#/" data-r="/">Главная</a>
     <div class="drop"><a href="#/uslugi" data-r="/uslugi">Услуги ▾</a><div class="mega"><div class="wrap"><div class="in">${cols}
-      <div class="feat"><div><h4>Не знаете, с чего начать</h4><p>Оставьте заявку, эксперт разберёт ваш объект и подскажет нужное направление и план.</p></div><a class="btn primary bracket" href="#/kontakty" style="margin-top:16px">Получить разбор</a></div>
     </div></div></div></div>
     <a href="#/segmenty" data-r="/segmenty">Сегменты</a>
     <a href="#/keysy" data-r="/keysy">Портфолио</a>
