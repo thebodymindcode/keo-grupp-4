@@ -7,7 +7,7 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-snap-type:y proximity;scroll-behavior:smooth}
 body{font-family:"Montserrat",sans-serif;color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased;line-height:1.5;text-rendering:optimizeLegibility}
-h1,h2,h3,h4{line-height:1.08;letter-spacing:-.01em;text-wrap:balance;overflow-wrap:break-word}
+h1,h2,h3,h4{line-height:1.08;letter-spacing:-.01em;text-wrap:balance}
 p,li{text-wrap:pretty}
 .eyebrow{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--orange)}
 .slide{min-height:100vh;scroll-snap-align:start;display:flex;flex-direction:column;position:relative;padding:54px clamp(28px,5vw,72px)}
@@ -60,7 +60,7 @@ p,li{text-wrap:pretty}
 .sbody{flex:1;display:flex;flex-direction:column;justify-content:center;padding:38px clamp(28px,5vw,72px) 0;width:100%;max-width:1224px;margin:0 auto}
 .shead{display:flex;align-items:flex-start;gap:14px;margin-bottom:26px}
 .sn{flex:0 0 auto;width:46px;height:46px;border-radius:13px;background:var(--ink);color:#fff;font-weight:800;font-size:20px;display:flex;align-items:center;justify-content:center}
-.shead h2{font-size:clamp(21px,3.2vw,34px);font-weight:800;margin-top:3px;min-width:0;overflow-wrap:break-word}
+.shead h2{font-size:clamp(21px,3.2vw,34px);font-weight:800;margin-top:3px;min-width:0;overflow-wrap:normal}
 .tl{list-style:none;counter-reset:s;columns:1;column-gap:34px}
 .tl.cols2{columns:2}.tl.cols3{columns:3}
 .tl li{counter-increment:s;position:relative;padding:9px 0 9px 32px;font-size:14px;color:var(--ink2);line-height:1.4;break-inside:avoid;border-bottom:1px solid var(--line)}
@@ -75,9 +75,13 @@ p,li{text-wrap:pretty}
 .closing .snum{color:rgba(255,255,255,.4)}
 @media(max-width:880px){
  .cards3,.cards4{grid-template-columns:1fr}
- .jrow{grid-template-columns:1fr 1fr}
+ .jrow{grid-template-columns:1fr}
  .tl.cols2,.tl.cols3{columns:1}
  .slide{min-height:auto;padding:40px 22px}
+ .shead2 h2{font-size:25px;line-height:1.14}
+ .closing h2{font-size:26px}
+ .cover h1{font-size:60px}
+ .shead h2{font-size:17.5px;line-height:1.18}
  .sslide{padding:0}.sbody{padding:28px 22px 0}
 }
 @media print{
@@ -109,8 +113,8 @@ p,li{text-wrap:pretty}
 </section>
 
 <section class="slide light"><div class="in">
- <div class="shead2"><div class="eyebrow">Что это</div><h2>Единое окно технического заказчика</h2>
-  <p class="lede">По статьям 45-51 Градостроительного кодекса заказчик собирает всю исходно-разрешительную документацию: от прав на землю до разрешения на строительство. Мы берём эту роль на себя целиком, ведём проект, проектирование и генподряд.</p></div>
+ <div class="shead2"><div class="eyebrow">Что это</div><h2>Единое окно технического заказчика</h2>
+  <p class="lede">По статьям 45‑51 Градостроительного кодекса заказчик собирает всю исходно-разрешительную документацию: от прав на землю до разрешения на строительство. Мы берём эту роль на себя целиком, ведём проект, проектирование и генподряд.</p></div>
  <div class="cards3">
   <div class="vc"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M8 13h8M8 17h6"/></svg></div><h3>Один договор</h3><p>Весь цикл девелопмента на одном контракте, без зоопарка подрядчиков и потерянных стыков.</p></div>
   <div class="vc"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="9.5" cy="7" r="4"/><path d="M16.5 11.5l1.8 1.8L22 9.6"/></svg></div><h3>Один ответственный</h3><p>За проект отвечает KEO. Согласования по всем ведомствам ведём параллельно, единым окном.</p></div>
@@ -123,7 +127,7 @@ p,li{text-wrap:pretty}
 <section class="slide journey"><div class="in">
  <div class="shead2"><div class="eyebrow">Маршрут проекта</div><h2>От участка до разрешения на строительство</h2>
   <p class="lede">Все 16 направлений ИРД мы ведём как единый маршрут, пятью фазами. По каждой задаче держим статус, срок и ответственного.</p></div>
- <div class="jrow"><div class="jc"><div class="jc-img" style="background-image:url(./images/karta/zemlya.jpg)"></div><div class="jc-b"><div class="jc-n">Фаза 01</div><h4>Земля и права</h4><p>Берём участок и приводим его в форму под проект: права, границы, ВРИ, кадастр, обременения.</p></div></div><div class="jc"><div class="jc-img" style="background-image:url(./images/karta/proekt.jpg)"></div><div class="jc-b"><div class="jc-n">Фаза 02</div><h4>Градостроительная основа</h4><p>Готовим градостроительный каркас и проводим архитектуру через все инстанции, вплоть до Мэра.</p></div></div><div class="jc"><div class="jc-img" style="background-image:url(./images/karta/izyskaniya.jpg)"></div><div class="jc-b"><div class="jc-n">Фаза 03</div><h4>Изыскания, сети и условия</h4><p>Собираем техническую и средовую основу: изыскания, сети, экологию, охранные и транспортные ограничения.</p></div></div><div class="jc"><div class="jc-img" style="background-image:url(./images/karta/ploschadka.jpg)"></div><div class="jc-b"><div class="jc-n">Фаза 04</div><h4>Площадка и спецтребования</h4><p>Закрываем спецтребования, готовим снос и выводим площадку в готовность к работам.</p></div></div><div class="jc"><div class="jc-img" style="background-image:url(./images/karta/dom.jpg)"></div><div class="jc-b"><div class="jc-n">Фаза 05</div><h4>Экспертиза и старт стройки</h4><p>Доводим до положительной экспертизы, получаем разрешение и заводим генподряд.</p></div></div></div>
+ <div class="jrow"><div class="jc"><div class="jc-img" style="background-image:url(./images/karta/zemlya.jpg)"></div><div class="jc-b"><div class="jc-n">Фаза 01</div><h4>Земля и права</h4><p>Берём участок и приводим его в форму под проект: права, границы, ВРИ, кадастр, обременения.</p></div></div><div class="jc"><div class="jc-img" style="background-image:url(./images/karta/proekt.jpg)"></div><div class="jc-b"><div class="jc-n">Фаза 02</div><h4>Градостроительная основа</h4><p>Готовим градостроительный каркас и проводим архитектуру через все инстанции, вплоть до Мэра.</p></div></div><div class="jc"><div class="jc-img" style="background-image:url(./images/karta/izyskaniya.jpg)"></div><div class="jc-b"><div class="jc-n">Фаза 03</div><h4>Изыскания, сети и условия</h4><p>Собираем техническую и средовую основу: изыскания, сети, экологию, охранные и транспортные ограничения.</p></div></div><div class="jc"><div class="jc-img" style="background-image:url(./images/karta/ploschadka.jpg)"></div><div class="jc-b"><div class="jc-n">Фаза 04</div><h4>Площадка и спецтребования</h4><p>Закрываем спецтребования, готовим снос и выводим площадку в готовность к работам.</p></div></div><div class="jc"><div class="jc-img" style="background-image:url(./images/karta/dom.jpg)"></div><div class="jc-b"><div class="jc-n">Фаза 05</div><h4>Экспертиза и старт стройки</h4><p>Доводим до положительной экспертизы, получаем разрешение и заводим генподряд.</p></div></div></div>
  <div class="snum"><span>KEO GROUP · Карта ИРД</span><span>03 / 21</span></div>
 </div></section>
 
@@ -155,7 +159,7 @@ p,li{text-wrap:pretty}
      <div class="sband" style="background-image:linear-gradient(90deg,rgba(24,22,26,.86),rgba(24,22,26,.34)),url(./images/karta/izyskaniya.jpg)">
        <div class="sband-in"><div class="sband-tag">Фаза 03 · Изыскания, сети и условия</div></div></div>
      <div class="sbody">
-       <div class="shead"><span class="sn">4</span><h2>Инженерные изыскания и исходные технические материалы</h2></div>
+       <div class="shead"><span class="sn">4</span><h2>Инженерные изыскания и исходные технические материалы</h2></div>
        <ol class="tl cols2"><li>Получение топографической съёмки и геоподосновы</li><li>Технический отчёт по инженерно-геодезическим изысканиям</li><li>Технический отчёт по инженерно-геологическим изысканиям</li><li>Технический отчёт по инженерно-экологическим изысканиям</li><li>Технический отчёт по инженерно-гидрометеорологическим изысканиям</li><li>Получение сведений о подземных коммуникациях</li><li>Получение сводного плана инженерных сетей</li><li>Согласование программы изысканий, если требуется</li><li>Положительное заключение экспертизы результатов инженерных изысканий</li></ol>
      </div>
      <div class="snum"><span>KEO GROUP · Карта ИРД</span><span>07 / 21</span></div>
@@ -171,7 +175,7 @@ p,li{text-wrap:pretty}
      <div class="sband" style="background-image:linear-gradient(90deg,rgba(24,22,26,.86),rgba(24,22,26,.34)),url(./images/karta/izyskaniya.jpg)">
        <div class="sband-in"><div class="sband-tag">Фаза 03 · Изыскания, сети и условия</div></div></div>
      <div class="sbody">
-       <div class="shead"><span class="sn">6</span><h2>Экология, санитарные ограничения, природные условия</h2></div>
+       <div class="shead"><span class="sn">6</span><h2>Экология, санитарные ограничения, природные условия</h2></div>
        <ol class="tl cols2"><li>Справка о фоновых концентрациях</li><li>Климатическая справка</li><li>Шумовые характеристики от Генплана</li><li>Сведения о санитарно-защитных зонах</li><li>Заключение и исходные данные по санитарному разрыву от ЖД</li><li>Заключение и исходные данные по санитарному разрыву от гаражей</li><li>Сведения о водоохранных зонах и прибрежных защитных полосах</li><li>Исходные данные Росрыболовства</li><li>Заключение по шуму</li><li>Увязка экологических, санитарных и водных ограничений с посадкой здания, ГПЗУ, ПЗЗ и проектной документацией</li></ol>
      </div>
      <div class="snum"><span>KEO GROUP · Карта ИРД</span><span>09 / 21</span></div>
@@ -187,7 +191,7 @@ p,li{text-wrap:pretty}
      <div class="sband" style="background-image:linear-gradient(90deg,rgba(24,22,26,.86),rgba(24,22,26,.34)),url(./images/karta/izyskaniya.jpg)">
        <div class="sband-in"><div class="sband-tag">Фаза 03 · Изыскания, сети и условия</div></div></div>
      <div class="sbody">
-       <div class="shead"><span class="sn">8</span><h2>Метрополитен, ФСО и специальные согласования</h2></div>
+       <div class="shead"><span class="sn">8</span><h2>Метрополитен, ФСО и специальные согласования</h2></div>
        <ol class="tl cols2"><li>Получение сведений Московского метрополитена</li><li>Согласование с Московским метрополитеном</li><li>Согласование с ФСО России</li><li>Иные специальные согласования по зонам влияния, режимным объектам, спецтрассам и охранным зонам</li><li>Увязка специальных требований с посадкой здания, подземной частью, котлованом, стройгенпланом и проектной документацией</li></ol>
      </div>
      <div class="snum"><span>KEO GROUP · Карта ИРД</span><span>11 / 21</span></div>
@@ -227,7 +231,7 @@ p,li{text-wrap:pretty}
      <div class="sband" style="background-image:linear-gradient(90deg,rgba(24,22,26,.86),rgba(24,22,26,.34)),url(./images/karta/ploschadka.jpg)">
        <div class="sband-in"><div class="sband-tag">Фаза 04 · Площадка и спецтребования</div></div></div>
      <div class="sbody">
-       <div class="shead"><span class="sn">13</span><h2>Банк, отлагательные условия, снос, обследования зданий</h2></div>
+       <div class="shead"><span class="sn">13</span><h2>Банк, отлагательные условия, снос, обследования зданий</h2></div>
        <ol class="tl cols2"><li>Реестр отлагательных условий по действующим договорам: бридж, опционы и иные</li><li>Реестр отлагательных условий по планируемым договорам: проектное финансирование, ДДУ, ПДКПН, мезонинное финансирование и иные</li><li>Согласие банка на снос залоговых объектов</li><li>Согласия залогодержателя на иные действия с объектами и ЗУ, если требуется</li><li>Техническое заключение по обследованию зданий под снос</li><li>Разработка и согласование ПОД на снос</li><li>Разработка ППР на снос</li><li>Получение разрешения на снос и уведомлений по сносу</li><li>Подготовка приказов и внутренних документов на снос</li><li>Увязка сноса с ОАТИ, временным ограждением, выносом сетей и подготовительными работами</li></ol>
      </div>
      <div class="snum"><span>KEO GROUP · Карта ИРД</span><span>16 / 21</span></div>
@@ -251,7 +255,7 @@ p,li{text-wrap:pretty}
      <div class="sband" style="background-image:linear-gradient(90deg,rgba(24,22,26,.86),rgba(24,22,26,.34)),url(./images/karta/dom.jpg)">
        <div class="sband-in"><div class="sband-tag">Фаза 05 · Экспертиза и старт стройки</div></div></div>
      <div class="sbody">
-       <div class="shead"><span class="sn">16</span><h2>Договор генерального подряда</h2></div>
+       <div class="shead"><span class="sn">16</span><h2>Договор генерального подряда</h2></div>
        <ol class="tl cols2"><li>Подготовка текста ДГП, согласованного банком</li><li>Подготовка приложений к ДГП</li><li>Лист ознакомления генподрядчика с условиями на площадке</li><li>Акт разбивки осей здания с визой ГП</li><li>Передача геологических изысканий с визой ГП</li><li>Исполнительная схема котлована</li><li>Подготовка и загрузка документов в АИС ОССиГ на весь грунт, перемещённый до получения РнС</li><li>Увязка ДГП с условиями проектного финансирования, отлагательными условиями, РнС, экспертизой, подготовительными работами и фактическим состоянием площадки</li></ol>
      </div>
      <div class="snum"><span>KEO GROUP · Карта ИРД</span><span>19 / 21</span></div>
@@ -271,7 +275,7 @@ p,li{text-wrap:pretty}
 <section class="slide closing"><div class="in">
  <div class="eyebrow" style="color:var(--orange)">Результат</div>
  <h2>Положительная экспертиза, разрешение на строительство, заход в стройку</h2>
- <p class="lede">Расскажите про участок и проект. Проведём аудит, соберём мастер-график ИРД и доведём до старта стройки.</p>
+ <p class="lede">Расскажите про участок и проект. Проведём аудит, соберём мастер-график ИРД и доведём до старта стройки.</p>
  <div class="contacts">
   <a href="tel:+74996477566">+7 499 647-75-66</a>
   <a href="mailto:info@keogroup.ru">info@keogroup.ru</a>
