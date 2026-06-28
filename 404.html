@@ -589,7 +589,7 @@ PAGES["/"]=()=>`
     <div>
       <div class="eyebrow">Единое окно по недвижимости в Москве</div>
       <h1 class="heroh1"><span>Реконструируем</span> <span>регистрируем</span> <span>узакониваем</span> <span>строим</span></h1>
-      <p class="lede"><span class="ulx">Полный цикл под ключ</span>: аудит, проект, согласование, легализация, регистрация, строительство, отделка и защита в суде. Инженеры, кадастровые специалисты и юристы в одной команде. Результат закрепляем <span class="ulx">гарантией в договоре</span>.</p>
+      <p class="lede"><span class="ulx">Полный цикл под ключ</span>: аудит, проект, согласование, легализация, регистрация, строительство, отделка и защита в суде. Инженеры, кадастровые специалисты и юристы в одной команде. Результат закрепляем гарантией в договоре.</p>
       <div class="cta"><a class="btn primary bracket" href="#/kontakty">Получить разбор объекта</a><a class="btn ghost bracket" href="#/uslugi">Все услуги</a></div>
     </div>
     <div class="pic"><img src="./images/hero.jpg" alt="Деловая Москва">
@@ -599,11 +599,11 @@ PAGES["/"]=()=>`
   ${trustBar()}
   <section class="onewin"><div class="wrap">
     <div class="sec-head"><div class="eyebrow">Единое окно</div><h2>Одно окно. Можно выдохнуть.</h2>
-      <p class="lede" style="margin-top:12px">Вы пришли туда, где недвижимостью в Москве занимаются под ключ. Не нужно собирать пятерых подрядчиков и бегать по инстанциям. Опишите объект, дальше всё берём на себя: проект, согласования, легализация, регистрация, строительство, отделка и защита в суде.</p><p style="margin-top:14px;font-size:15.5px;color:var(--ink2)">КЕО это <b style="color:var(--navy)">Качество</b>, <b style="color:var(--navy)">Единство</b> и <b style="color:var(--navy)">Ответственность</b>. А для вас, ваше <b style="color:var(--navy)">Качественное Единое Окно</b>.</p></div>
+      <p class="lede" style="margin-top:12px">Вы пришли туда, где недвижимостью в Москве занимаются под ключ. Не нужно собирать пятерых подрядчиков и бегать по инстанциям. Опишите объект, дальше всё берём на себя: проект, согласования, легализация, регистрация, строительство, отделка и защита в суде.</p><p style="margin-top:14px;font-size:15.5px;color:var(--ink2)">КЕО это <b style="color:var(--navy)" class="ulx">Качество</b>, <b style="color:var(--navy)" class="ulx">Единство</b> и <b style="color:var(--navy)" class="ulx">Ответственность</b>. А для вас, ваше <b style="color:var(--navy)">Качественное Единое Окно</b>.</p></div>
     <div class="funnel">
       <div class="fchips"><span class="fchip">Строительство</span><span class="fchip">Легализация и земля</span><span class="fchip">Кадастр и Росреестр</span><span class="fchip">ДГИ и город</span><span class="fchip">Суды и споры</span><span class="fchip">Управление активами</span></div>
       <div class="farrow"><span>всё сходится в одно окно</span></div>
-      <div class="fhub"><b>KEO GROUP, единое окно</b><span>Один договор. <span class="ulx">Один ответственный за объект</span>. Всё общение с Росреестром, ДГИ, ДГП, Мосгосстройнадзором, Мосжилинспекцией и БТИ на нас.</span></div>
+      <div class="fhub"><b>KEO GROUP, единое окно</b><span>Один договор. Один ответственный за объект. Всё общение с Росреестром, ДГИ, ДГП, Мосгосстройнадзором, Мосжилинспекцией и БТИ на нас.</span></div>
       <div class="farrow farr2"></div>
       <div class="fout">Документы на руках, объект работает, вы спокойны.</div>
     </div>
@@ -656,7 +656,7 @@ PAGES["/"]=()=>`
 
 PAGES["/uslugi"]=()=>`<section><div class="wrap">
   <p class="crumbs"><a href="#/">Главная</a> / <span>Услуги</span></p>
-  <div class="sec-head"><div class="eyebrow">Услуги</div><h2>Все направления KEO GROUP</h2><p class="lede" style="margin-top:12px">${SERVICES.length} услуг в пяти направлениях. На каждую отдельная страница: что входит, сроки и цена.</p></div>
+  <div class="sec-head"><div class="eyebrow">Услуги</div><h2>Все направления KEO GROUP</h2><p class="lede" style="margin-top:12px">${SERVICES.length} услуг в шести направлениях. <span class="ulx">На каждую отдельная страница</span>: что входит, сроки и цена.</p></div>
   ${GROUPS.map(g=>`<div style="margin-bottom:42px"><div style="display:flex;align-items:center;gap:12px;margin-bottom:18px"><span style="width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:color-mix(in srgb,${g.c} 14%,#fff);color:${g.c}">${ICONS[g.key]}</span><h3 style="font-size:24px">${esc(g.title)}</h3></div><div class="grid g3">${svcByGroup(g.key).map(scard).join('')}</div></div>`).join('')}
 </div></section>${band("Не нашли свою ситуацию","Опишите задачу, подскажем направление и план. Часто решение есть даже там, где отказали другие.")}`;
 
@@ -664,7 +664,7 @@ PAGES["/segmenty"]=()=>`
  <section class="hero" style="padding-bottom:6px"><div class="wrap"><div class="row">
    <div><p class="crumbs"><a href="#/">Главная</a> / <span>Сегменты</span></p>
      <div class="eyebrow">Кому помогаем</div><h1>Решения под вашу ситуацию</h1>
-     <p class="lede">KEO GROUP работает с собственниками, девелоперами, ритейлом и арендаторами городского имущества. Найдите свой случай и сразу перейдите к нужной услуге.</p>
+     <p class="lede">KEO GROUP работает с собственниками, девелоперами, ритейлом и арендаторами городского имущества. <span class="ulx">Найдите свой случай</span> и сразу перейдите к нужной услуге.</p>
      <div class="cta"><a class="btn primary bracket" href="#/kontakty">Получить разбор объекта</a><a class="btn ghost bracket" href="#/uslugi">Все услуги</a></div></div>
    <div class="pic"><img src="./images/land/segmenty.jpg" alt="Кому помогает KEO GROUP"><div class="badge"><b>B2B</b><span>собственники, девелоперы, инвесторы, сети</span></div></div>
  </div></div></section>
@@ -715,7 +715,7 @@ PAGES["/o-kompanii"]=()=>`
  <section class="hero"><div class="wrap"><div class="row">
    <div><p class="crumbs"><a href="#/">Главная</a> / <span>О компании</span></p>
      <div class="eyebrow">О компании</div><h1>KEO GROUP</h1>
-     <p class="lede">Юридическое и градостроительное сопровождение коммерческой недвижимости в Москве. Основатели в недвижимости больше 20 лет, команда работает по Москве и области как единое окно: юристы, кадастровые инженеры и градостроители в одном кабинете. С 2023 года развиваем управление коммерческой недвижимостью.</p>
+     <p class="lede">Юридическое и градостроительное сопровождение коммерческой недвижимости в Москве. Основатели в недвижимости больше 20 лет, команда работает по Москве и области <span class="ulx">как единое окно</span>: юристы, кадастровые инженеры и градостроители в одном кабинете. С 2023 года развиваем управление коммерческой недвижимостью.</p>
      <div class="cta"><a class="btn primary bracket" href="#/kontakty">Обсудить проект</a><a class="btn ghost bracket" href="#/keysy">Портфолио</a></div>
    </div>
    <div class="pic"><img src="./images/land/about.jpg" alt="KEO GROUP"><div class="badge"><b>20+ лет</b><span>опыта основателей в недвижимости</span></div></div>
@@ -755,7 +755,7 @@ PAGES["/ceny"]=()=>`
  <section class="hero" style="padding-bottom:6px"><div class="wrap"><div class="row">
    <div><p class="crumbs"><a href="#/">Главная</a> / <span>Цены</span></p>
      <div class="eyebrow">Цены</div><h1>Прозрачная стоимость по этапам</h1>
-     <p class="lede">Это средние ориентиры по рынку Москвы. Точную смету называем после бесплатного разбора объекта. Оплата по этапам, без скрытых платежей, на руки закрывающие документы.</p>
+     <p class="lede">Это средние ориентиры по рынку Москвы. Точную смету называем после бесплатного разбора объекта. Оплата по этапам, <span class="ulx">без скрытых платежей</span>, на руки закрывающие документы.</p>
      <div class="cta"><a class="btn primary bracket" href="#/kontakty">Запросить расчёт</a></div></div>
    <div class="pic"><img src="./images/land/ceny.jpg" alt="Цены KEO GROUP"><div class="badge"><b>по этапам</b><span>оплата без скрытых платежей</span></div></div>
  </div></div></section>
