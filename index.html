@@ -267,6 +267,11 @@
   .lthumb{height:200px;overflow:hidden;background:#eef0f7;border-bottom:1px solid var(--line)}
   .lthumb img{width:100%;height:100%;object-fit:cover;object-position:top}
   .card.letter:hover{transform:translateY(-4px);box-shadow:var(--sh-h)}
+  .licthumb{height:248px;display:flex;align-items:center;justify-content:center;padding:18px;background:linear-gradient(160deg,#f4f6fb,#eceff6);border-bottom:1px solid var(--line)}
+  .licthumb img{width:auto;max-width:100%;height:100%;object-fit:contain;object-position:center;border-radius:5px;box-shadow:0 8px 22px rgba(20,30,60,.16)}
+  .card.lic:hover{transform:translateY(-4px);box-shadow:var(--sh-h)}
+  .card.lic:hover .licthumb img{box-shadow:0 12px 30px rgba(20,30,60,.24)}
+  .lictag{display:inline-block;align-self:flex-start;font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;padding:5px 11px;border-radius:999px}
   .lbox{position:fixed;inset:0;z-index:95;background:rgba(15,17,22,.85);display:none;align-items:center;justify-content:center;padding:24px}
   .lbox.open{display:flex}
   .lbox img{max-width:min(720px,92vw);max-height:88vh;border-radius:12px;box-shadow:0 24px 70px rgba(0,0,0,.55)}
@@ -631,7 +636,7 @@ PAGES["/"]=()=>`
     </div>
     <div style="margin-top:30px"><a class="btn primary bracket" href="#/kontakty">Доверить объект профессионалам</a></div>
   </div></section>
-  <section style="padding-top:0"><div class="wrap"><div style="background:#fff;border:1px solid var(--line);border-left:4px solid var(--orange);border-radius:var(--r-lg);padding:30px 32px;box-shadow:var(--sh);display:flex;flex-wrap:wrap;gap:22px;align-items:center;justify-content:space-between"><div style="max-width:660px"><div class="eyebrow" style="color:var(--orange)">КРТ, действуйте на опережение</div><h2 style="margin:8px 0 10px">Ваш объект в зоне комплексного развития территории?</h2><p class="muted" style="font-size:15.5px">Реновация промзон идёт по всей Москве. Поможем добиться исключения объекта из КРТ или справедливой компенсации через суд, пока сроки не вышли.</p></div><a class="btn primary bracket" href="#/u/krt-zashchita" style="flex:0 0 auto">Защитить объект в КРТ</a></div></div></section>
+  <section style="padding-top:0"><div class="wrap"><div style="background:#fff;border:1px solid var(--line);border-left:4px solid var(--orange);border-radius:var(--r-lg);padding:30px 32px;box-shadow:var(--sh);display:flex;flex-wrap:wrap;gap:22px;align-items:center;justify-content:space-between"><div style="max-width:660px"><div class="eyebrow" style="color:var(--orange)">КРТ, действуйте на опережение</div><h2 style="margin:8px 0 10px">Ваш объект в зоне КРТ (комплексного развития территории)?</h2><p class="muted" style="font-size:15.5px">Реновация промзон идёт по всей Москве. Поможем добиться исключения объекта из КРТ или справедливой компенсации через суд, пока сроки не вышли.</p></div><a class="btn primary bracket" href="#/u/krt-zashchita" style="flex:0 0 auto">Защитить объект в КРТ</a></div></div></section>
   <section style="padding-top:0"><div class="wrap">
     <div class="sec-head"><div class="eyebrow">Навигатор по задачам</div><h2>С какой задачей пришли</h2><p class="lede" style="margin-top:12px">Шесть направлений, внутри отдельная страница на каждую из 52 услуг.</p></div>
     <div class="grid g3">${GROUPS.map(g=>`<a class="gcard" href="#/g/${g.key}" style="--c:${g.c}"><div class="ic">${ICONS[g.key]}</div><h3>${esc(g.title)}</h3><p>${esc(g.desc)}</p><span class="cnt">${svcByGroup(g.key).length} услуг →</span></a>`).join('')}<a class="gcard" href="#/kontakty" style="--c:#d8620f"><div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div><h3>Не знаете, с чего начать</h3><p>Оставьте заявку: эксперт бесплатно разберёт объект и подскажет нужное направление и понятный план.</p><span class="cnt">Получить разбор →</span></a></div>
@@ -655,6 +660,7 @@ PAGES["/"]=()=>`
       <p class="muted" style="font-size:16px">Юристы, кадастровые инженеры и градостроители KEO GROUP работают сообща. Основатели в недвижимости больше 25 лет, у нас собственный проектный отдел, а специалисты прошли работу в Росреестре и БТИ. Берём весь цикл общения с госорганами на себя, результат закрепляем в договоре.</p>
       <div style="margin-top:22px"><a class="btn ghost bracket" href="#/o-kompanii">Подробнее о компании</a></div></div>
   </div></div></section>
+  ${credBlock()}
   <section style="padding-top:0"><div class="wrap">
     <div class="sec-head"><div class="eyebrow">Кому помогаем</div><h2>Решения под ваши задачи</h2></div>
     <div class="grid g4">${SEG.slice(0,8).map(x=>`<a class="card" href="#/u/${x.link}" style="display:block;border-top:3px solid ${x.c}"><h3 style="font-size:16px;margin-bottom:8px">${esc(x.t)}</h3><p class="muted" style="font-size:13px;margin:0 0 12px">${esc(x.sol)}</p><span style="color:${x.c};font-weight:800;font-size:13px">Подробнее →</span></a>`).join('')}</div>
@@ -749,6 +755,7 @@ PAGES["/o-kompanii"]=()=>`
  <section style="padding-top:0"><div class="wrap"><div class="sec-head"><div class="eyebrow">Госорганы</div><h2>Работаем напрямую с госорганами Москвы</h2><p class="lede" style="margin-top:12px">Берём на себя всё общение с инстанциями, от подготовки документов до результата.</p></div>
    <div class="govgrid">${GOVS.map(g=>`<div class="govcard"><span class="gic">${g.i}</span><span>${esc(g.n)}</span></div>`).join('')}</div>
  </div></section>
+ ${credBlock()}
  <section style="padding-top:0"><div class="wrap"><div class="sec-head"><div class="eyebrow">Доверие</div><h2>Среди клиентов и партнёров</h2></div>
    <div class="clogos">${["Мосводоканал","X5 Retail Group","РЖД","Leon","Ломоносовская школа"].map(x=>`<span class="clogo">${esc(x)}</span>`).join('')}</div>
    <p class="muted" style="margin-top:18px;font-size:14px">Благодарственные письма от ООО «Вперёд», УК «Альфа-Капитал», АО «ТЕОДОР» и других компаний.</p>
@@ -986,6 +993,22 @@ const GOVS=[
  {n:"Роспотребнадзор",i:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6l-5 8.5A2 2 0 0 0 7 21h10a2 2 0 0 0 2-3.5L14 9V3"/><path d="M7.5 15h9"/></svg>'},
 ];
 function clientStrip(){return `<section style="padding:36px 0"><div class="wrap"><div class="clogos">${CLIENTS.map(x=>`<span class="clogo">${esc(x)}</span>`).join('')}</div></div></section>`;}
+const CREDS=[
+ {img:"sro",pdf:"vypiska-sro-nopriz.pdf",tag:"Членство в СРО",tagbg:"#fbe7d4",tagc:"#bd560b",
+  title:"Допуск к проектированию",
+  desc:"ООО «КЕО ГРУПП» состоит в саморегулируемой организации проектировщиков «ЦЕНТРРЕГИОНПРОЕКТ» и вправе готовить проектную документацию объектов капитального строительства.",
+  meta:"Реестр НОПРИЗ · № П-025-007726450531-0931"},
+ {img:"akkr-proekt",pdf:"akkreditaciya-proektnaya.pdf",tag:"Росаккредитация",tagbg:"#e7f0fb",tagc:"#1f6fd6",
+  title:"Негосэкспертиза проектной документации",
+  desc:"Свидетельство Федеральной службы по аккредитации на право проведения негосударственной экспертизы проектной документации.",
+  meta:"Свидетельство № RA.RU.611849"},
+ {img:"akkr-izyskaniya",pdf:"akkreditaciya-izyskaniya.pdf",tag:"Росаккредитация",tagbg:"#e7f0fb",tagc:"#1f6fd6",
+  title:"Негосэкспертиза инженерных изысканий",
+  desc:"Свидетельство Федеральной службы по аккредитации на право проведения негосударственной экспертизы результатов инженерных изысканий.",
+  meta:"Свидетельство № RA.RU.611881"}
+];
+function credBlock(){return `<section style="padding-top:0"><div class="wrap"><div class="sec-head"><div class="eyebrow">Лицензии и допуски</div><h2>Работаем на официальных допусках</h2><p class="lede" style="margin-top:12px">Право вести проектирование подтверждено членством в профильной СРО и пройденными аккредитациями. Нажмите на документ, чтобы открыть.</p></div>
+  <div class="grid g3">${CREDS.map(c=>`<div class="card lic" data-img="./images/licenses/${c.img}.jpg" data-org="${esc(c.title)}" style="cursor:pointer;padding:0;overflow:hidden;display:flex;flex-direction:column"><div class="licthumb"><img src="./images/licenses/${c.img}.jpg" alt="${esc(c.title)}, документ KEO GROUP" loading="lazy"></div><div style="padding:20px;display:flex;flex-direction:column;flex:1"><span class="lictag" style="background:${c.tagbg};color:${c.tagc}">${esc(c.tag)}</span><h3 style="font-size:17px;margin:11px 0 8px">${esc(c.title)}</h3><p class="muted" style="font-size:13.5px;margin:0 0 12px;flex:1">${esc(c.desc)}</p><div class="ink3" style="font-size:12px;margin-bottom:14px">${esc(c.meta)}</div><div style="display:flex;gap:16px;align-items:center;margin-top:auto"><span style="color:var(--orange);font-weight:800;font-size:13px">Открыть документ →</span><a href="./files/${c.pdf}" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="color:var(--ink2);font-size:12px;font-weight:700;border-bottom:1px solid var(--line)">PDF</a></div></div></div>`).join('')}</div></div></section>`;}
 function trustLetters(){return `<section style="padding-top:0"><div class="wrap"><div class="sec-head"><div class="eyebrow">Нам доверяют</div><h2>Благодарственные письма</h2><p class="lede" style="margin-top:12px">Компании и организации, которые рекомендуют KEO GROUP. Нажмите, чтобы открыть письмо.</p></div>
   <div class="grid g4">${LETTERS.map(l=>`<div class="card letter" data-letter="${l.img}" data-org="${esc(l.org)}" style="cursor:pointer;padding:0;overflow:hidden;display:flex;flex-direction:column"><div class="lthumb"><img src="./images/letters/${l.img}.jpg" alt="Благодарственное письмо ${esc(l.org)}" loading="lazy"></div><div style="padding:18px"><h3 style="font-size:16px;margin:0 0 4px">${esc(l.org)}</h3><p class="muted" style="font-size:13px;margin:0 0 8px">${esc(l.subj)}</p><div class="ink3" style="font-size:12px">Благодарственное письмо, ${esc(l.year)} · смотреть →</div></div></div>`).join('')}</div></div></section>`;}
 /* ===== БЛОГ: экспертные статьи ===== */
@@ -1368,7 +1391,8 @@ function render(){
 document.getElementById('burger').onclick=()=>document.getElementById('menu').classList.toggle('open');
 window.openLetter=function(src,org){var lb=document.getElementById('lbox');document.getElementById('lbimg').src=src;document.getElementById('lbimg').alt=org||'';lb.classList.add('open');};
 (function(){var lb=document.getElementById('lbox');if(lb){document.getElementById('lbx').onclick=function(){lb.classList.remove('open');};lb.addEventListener('click',function(e){if(e.target===lb)lb.classList.remove('open');});}
- document.addEventListener('click',function(e){var c=e.target.closest&&e.target.closest('.letter');if(c&&c.dataset.letter)window.openLetter('./images/letters/'+c.dataset.letter+'.jpg',c.dataset.org);});})();
+ document.addEventListener('click',function(e){var c=e.target.closest&&e.target.closest('.letter');if(c&&c.dataset.letter)window.openLetter('./images/letters/'+c.dataset.letter+'.jpg',c.dataset.org);});
+ document.addEventListener('click',function(e){var c=e.target.closest&&e.target.closest('.lic');if(c&&c.dataset.img)window.openLetter(c.dataset.img,c.dataset.org);});})();
 (function(){
   var btn=document.getElementById('cbtn'),back=document.getElementById('cback');if(!btn)return;
   function open(){back.classList.add('open');}function close(){back.classList.remove('open');}
